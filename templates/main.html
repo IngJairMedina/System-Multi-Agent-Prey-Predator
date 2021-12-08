@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conejo Depredador</title>
+	<link rel="icon" type="image/img" href="{{ url_for('static', filename='ico_conejo.png') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style type="text/css">
+body {
+	background-color: #003b5c;
+}
+</style>
+</head>
+<body>
+<ul>
+  <li><a onclick="location.reload()" href="#top" style="margin-right: 10px; margin-left: 10px;"><img class="active" src="{{ url_for('static', filename='escudo_negativo.png')}}" width="73" height="73" alt=""/></a></li>
+  <li>
+    <label style=" padding: 25px 30px; font-family: 'Source Sans Pro Black'; font-size: 20px; ">ECOSISTEMA CONEJO DEPREDADORES</label>
+  </li>
+	<li><a href="#parametros" style=" padding: 25px 30px;" >Parámetros</a></li>
+  <li><a href="../static/diagram de flujo.png" style=" padding: 25px 30px;">Diagrama de flujo</a></li>
+  <li><a href="#footer" style=" padding: 25px 30px;">Nosotros</a></li>
+</ul>
+<div align="center" style=" width: 100%; height: 80px" id="top"></div>
+<div align="center" style=" width: 100%; height: auto;">
+  <div style="width: 721px; float: left;">
+    <canvas id="cv1" width="720px" height="480px" style="background: #957D5C;"></canvas>
+  </div>
+  <div id="output" style="position:absolute; padding:5px;"></div>
+  <div style="width: 600px; float: right;">
+    <table width="100%" border="0">
+      <tbody>
+		  <tr>
+			  <td colspan="6" align="center"><label style="font-size: 18px; font-family: 'Source Sans Pro Black';">PARÁMETROS DE SIMULACIÓN</label></td>
+		  </tr>
+		  <tr>
+			  <td width="17%" rowspan="2" align="center"><label>Especie</label></td>
+			  <td colspan="2" align="center"><label>Color</label></td>
+			  <td colspan="2" rowspan="2" align="center"><label>Cantidad de animales</label></td>
+			  <td width="29%" rowspan="2" align="center"><label for="range">Velocidad de reproducción</label></td>
+		  </tr>
+		  <tr>
+			  <td width="9%" align="center"><label>M</label></td>
+			  <td width="8%" align="center"><label>H</label></td>
+		  </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td align="center"><input class="selcolor" type="color" width="30%" id="conM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="conH"></td>
+          <td width="28%"><label for="number">Cantidad de conejos:</label></td>
+          <td width="9%" align="center"><input class="contNum" type="number" name="nm0" id="nm0"></td>
+          <td align="center"><input name="rg1" type="range" id="rg1" max="1" min="0" value="0.7" step="0.1" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+          <td><label>
+                <input name="cbx0" type="checkbox" id="cbx0" value="1">
+                Lobo</label></td>
+          <td align="center"><input class="selcolor" type="color" width="30%" id="lobM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="lobH"></td>
+          <td><label for="number">Cantidad de lobos:</label></td>
+          <td align="center"><input class="contNum" type="number" name="nm1" id="nm1"></td>
+          <td align="center"><input name="rg2" type="range" id="rg2" max="1" min="0" step="0.1" value="0.7" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+          <td><label>
+                <input type="checkbox" name="cbx1" value="1" id="cbx1">
+                Halcón</label></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="halM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="halH"></td>
+          <td><label for="number">Cantidad de halcones:</label></td>
+          <td align="center"><input class="contNum" type="number" name="nm2" id="nm2"></td>
+          <td align="center"><input name="rg3" type="range" id="rg3" max="1" min="0" step="0.1" value="0.7" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+          <td><label>
+                <input type="checkbox" name="cbx2" value="1" id="cbx2">
+                Serpiente</label></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="serM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="serH"></td>
+          <td><label for="number">Cantidad de serpientes:</label></td>
+          <td align="center"><input class="contNum" type="number" name="nm3" id="nm3"></td>
+          <td align="center"><input name="rg4" type="range" id="rg4" max="1" min="0" step="0.1" value="0.7" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+          <td><label>
+                <input type="checkbox" name="cbx3" value="1" id="cbx3">
+                Jabalí</label></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="jabM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="jabH"></td>
+          <td><label for="number">Cantidad de jabalis:</label></td>
+          <td align="center"><input class="contNum" type="number" name="nm4" id="nm4"></td>
+          <td align="center"><input name="rg5" type="range" id="rg5" max="1" min="0" step="0.1" value="0.7" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+          <td><label>
+                <input type="checkbox" name="cbx4" value="1" id="cbx4">
+                Búho</label></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="buhM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="buhH"></td>
+          <td><label for="number">Cantidad de búhos:</label></td>
+          <td align="center"><input class="contNum" type="number" name="nm5" id="nm5"></td>
+          <td align="center"><input name="rg6" type="range" id="rg6" max="1" min="0" step="0.1" value="0.7" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+          <td><label>
+                <input type="checkbox" name="cbx5" value="1" id="cbx5">
+                Zorro</label></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="zorM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="zorH"></td>
+          <td><label for="number">Cantidad de zorros:</label></td>
+          <td align="center"><input class="contNum" type="number" name="nm6" id="nm6"></td>
+          <td align="center"><input name="rg7" type="range" id="rg7" max="1" min="0" step="0.1" value="0.7" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+          <td><label>
+                <input type="checkbox" name="cbx6" value="1" id="cbx6">
+                Comadreja</label></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="comM"></td>
+			<td align="center"><input class="selcolor" type="color" width="30%" id="comH"></td>
+          <td><label for="number">Cantidad de comadrejas:</label></td>
+          <td align="center"><input class="contNum" type="number" name="nm7" id="nm7"></td>
+          <td align="center"><input name="rg8" type="range" id="rg8" max="1" min="0" step="0.1" value="0.7" autocomplete="off" style="width: 150px;"></td>
+        </tr>
+        <tr>
+			<td colspan="6" align="center"><label for="number">Ticks a simular:</label> <input class="contNum" type="number" name="nm18" id="nm18" value="100"></td>
+          </tr>
+        <tr>
+			<td colspan="6" align="center"><label for="range">Tiempo de ticks:</label>
+		    <input name="rg0" type="range" id="rg0" max="1000" min="1" step="1" value="200" autocomplete="off" style="width: 250px;"></td>
+		</tr>
+        <tr>
+			<td colspan="6" align="center"><label for="number">Ticks transcurridos:</label> <input class="contNum" type="number" name="nm8" id="nm8" readonly></td>
+		</tr>
+        <tr>
+			<td colspan="6" align="center"><input class="boton" type="button" name="btn0" id="btn0" value="CARGAR"><input class="boton" type="button" name="btn1" id="btn1" value="EJECUTAR"></td></tr>
+      </tbody>
+    </table>
+    <table width="100%" border="0">
+      <tbody>
+        <tr>
+          <td width="12%"></td>
+          <td class="opacidad"><label for="number">Conejos</label><br>
+            <input class="contNum" type="number" name="nm9" id="nm9" readonly></td>
+          <td class="opacidad"><label for="number">Lobos</label><br>
+            <input class="contNum" type="number" name="nm10" id="nm10" readonly></td>
+          <td class="opacidad"><label for="number">Halcones</label><br>
+            <input class="contNum" type="number" name="nm11" id="nm11" readonly></td>
+          <td width="12%"></td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td class="opacidad"><label for="number">Serpientes</label><br>
+            <input class="contNum" type="number" name="nm12" id="nm12" readonly></td>
+          <td class="opacidad"><label for="number">Jabalis</label><br>
+            <input class="contNum" type="number" name="nm13" id="nm13" readonly></td>
+          <td class="opacidad"><label for="number">Búhos</label><br>
+            <input class="contNum" type="number" name="nm14" id="nm14" readonly></td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td class="opacidad"><label for="number">Zorros</label><br>
+            <input class="contNum" type="number" name="nm15" id="nm15" readonly></td>
+          <td class="opacidad"><label for="number">Comadrejas</label><br>
+            <input class="contNum" type="number" name="nm16" id="nm16" readonly></td>
+          <td class="opacidad"><label for="number">Pasto</label><br>
+            <input class="contNum" type="number" name="nm17" id="nm17" readonly></td>
+          <td>&nbsp;</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+		</div>
+  <div style="width: 100%; float: left;">
+	  <canvas id="cv2" width="720px" height="320px" style="background: #FFFFFF;"></canvas>
+	</div>
+	<div style="width: 100%; float: left; width: 100%; height: auto;">
+		<hr size="8px" color="#00b5e2" width="90%"/>
+	</div>
+	
+  <div align="center" style="float: left; width: 100%; height: auto;  background: radial-gradient(circle, rgba(0,181,226,1) 0%, rgba(0,59,92,1) 60%);" id="parametros">
+	<p style="font-size: 24px; margin-top: 100px; font-family: 'Source Sans Pro Black';">Parámetros del ecosistema</p>
+	<p style="font-family: 'Source Sans Pro Black';">Selección de especie</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%; ">En esta sección se puede seleccionar las especies que interactúan en la simulación, por defecto siempre aparecerá el conejo.</p>
+	<p style="font-family: 'Source Sans Pro Black';">Color</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">Cuando habilita la casilla de una especie, aparecen 2 recuadros de colores diferentes, aquí podrá seleccionar el color con el que será representado tanto la hembra como el macho en la simulación.</p>
+	<p style="font-family: 'Source Sans Pro Black';">Cantidad de animales</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">Al habilitar la casilla de una especie, se habilitará el recuadro de número de animales en la parte derecha de la pantalla, aquí podrá indicar cuantos ejemplares de esa especie quiere que aparezcan en la simulación.</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">Nota: la cantidad de hembras y machos es aleatoria.</p>
+	<p style="font-family: 'Source Sans Pro Black';">Velocidad de reproducción</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">En esta sección podrá configurara la velocidad con la que una especie se reproduce, a mayor velocidad mayor cantidad de agentes por lo que el sistema podría tener tiempos más largos entre ticks.</p>
+	<p style="font-family: 'Source Sans Pro Black';">Tiempo de ticks</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">Es el tiempo en que se muestra cada movimiento en la simulación, el valor puede variar desde 10 ms hasta 1 segundo por tick, en el cuadro ticks se muestran los ticks transcurridos de simulación.</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">Nota: un tick es equivalente a un mes de simulación</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">Cuando se han seleccionado todos los parámetros que requiere, puede dar clic en el botón "CARGAR", si faltara algún dato la simulación arrojara una notificación sobre este parámetro, si todo es correcto se generaran las especies.</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">Para comenzar la simulación debe dar clic en el botón "EJECUTAR", esto comenzara a correr las simulación, cargara el número de especies por tick en los recuadros de especie.</p>
+	<p style="font-size: 16px; margin-left: 20%; margin-right: 20%;">En la gráfica se podrá observar el número de especies que hay dentro del ecosistema por cada tick de la simulación.</p>
+	
+	<table border="4" bordercolor="#FFFFFF" style="background: #003b5c;" cellpadding="0" cellspacing="0" width="70%">
+	  <col width="207">
+	  <col width="402">
+	  <col width="245">
+	  <tr align="center">
+	    <td colspan="3" width="853" align="3"><label style="font-size: 18px; font-family: 'Source Sans Pro Black';">PROPIEDADES DEL AGENTE</label></td>
+      </tr>
+	  <tr align="center" >
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Propiedad</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Descripción</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Tipo</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">EA</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Estado de apareo</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Booleano</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">EV</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Estado de vida</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Booleano</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">X</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Posición en X</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Y</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Posición en Y</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">S</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Sexo</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">String</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">V</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Vida transcurrida</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">TNG</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Tiempo de nueva gestación</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="207"><label style="font-size: 16px; font-family: 'Source Sans Pro';">V</label></td>
+	    <td width="402"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Vida transcurrida</label></td>
+	    <td width="245"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+    </table>
+<p></p>
+	  <table border="4" bordercolor="#FFFFFF" cellpadding="0" style="background: #003b5c;" cellspacing="0" width="70%">
+	  <col width="227">
+	  <col width="386">
+	  <col width="241">
+	  <tr align="center">
+	    <td colspan="3" width="853"><label style="font-size: 18px; font-family: 'Source Sans Pro Black';">MEMORIA DEL AGENTE</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Propiedad</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Descripción</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Tipo</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">G</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Tiempo de gestación</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">E</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Energía</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">vmin</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Vida mínima del agente</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">vmax</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Vida máxima del agente</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">numminnac</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Mínimo de crías por nacimiento</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">nummaxnac</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Máximo de crías por nacimiento</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">vmaxrep</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Edad máxima de reproducción</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">vminrep</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Edad mínima de reproducción</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">probapar</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Probabilidad de apareo</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número flotante</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">probgest</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Probabilidad de quedar gestante</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número flotante</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">RA</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Radio de acción</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número flotante</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">tiempogesta</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Tiempo de gestación</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">tiemponuevagesta</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Tiempo para un nuevo apareo</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="227"><label style="font-size: 16px; font-family: 'Source Sans Pro';">EnAl</label></td>
+	    <td width="386"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Energía del alimento</label></td>
+	    <td width="241"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+    </table>
+	<p></p>
+	<table border="4" bordercolor="#FFFFFF" cellpadding="0"  style="background: #003b5c;" cellspacing="0" width="70%">
+	  <col width="228">
+	  <col width="424">
+	  <col width="201">
+	  <tr align="center">
+	    <td colspan="3" width="853"><label style="font-size: 18px; font-family: 'Source Sans Pro Black';">PROPIEDADES DEL SIMULADOR</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="228"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Propiedad</label></td>
+	    <td width="424"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Descripción</label></td>
+	    <td width="201"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">tipo</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="228"><label style="font-size: 16px; font-family: 'Source Sans Pro';">TA</label></td>
+	    <td width="424"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Total de agentes</label></td>
+	    <td width="201"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="228"><label style="font-size: 16px; font-family: 'Source Sans Pro';">dias_tick</label></td>
+	    <td width="424"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Días por tick</label></td>
+	    <td width="201"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Número entero</label></td>
+      </tr>
+    </table>
+	<p></p>
+	<table border="4" bordercolor="#FFFFFF" cellpadding="0" cellspacing="0"  width="70%" style=" background: #003b5c; margin-bottom: 100px">
+	  <col width="136">
+	  <col width="60">
+	  <col width="79">
+	  <col width="163" span="2">
+	  <col width="121" span="2">
+	  <col width="83" span="2">
+	  <col width="246">
+	  <tr align="center">
+	    <td colspan="10" width="1255"><label style="font-size: 18px; font-family: 'Source Sans Pro Black';">CARACTERÍSTICAS DE AGENTES</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Agente</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">G</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">TNG</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">numminnac</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">nummaxnac</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">vminrep</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">vmaxrep</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">vmin</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">vmax</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro Black';">Depredadores</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Conejo</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">1</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">4</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">48</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">48</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">96</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Comadreja, serpiente, zorro, lobo, búho, jabalí y halcón</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Comadreja</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">1</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">4</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">4</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">8</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">24</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Serpiente, zorro, búho y halcón</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Jabalí</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">4</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">5</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">96</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">120</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">180</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Lobo</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Serpiente</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">4</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">25</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">84</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">84</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">120</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Halcón</label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Zorro</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">8</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">96</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">120</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">168</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';"></label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Búho</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">1</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">1</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">6</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">24</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">84</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">120</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">180</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';"></label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Lobo</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">3</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">4</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">7</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">24</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">146</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">132</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">180</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';"></label></td>
+      </tr>
+	  <tr align="center">
+	    <td width="136"><label style="font-size: 16px; font-family: 'Source Sans Pro';">Halcón</label></td>
+	    <td width="60"><label style="font-size: 16px; font-family: 'Source Sans Pro';">1</label></td>
+	    <td width="79"><label style="font-size: 16px; font-family: 'Source Sans Pro';">12</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">2</label></td>
+	    <td width="163"><label style="font-size: 16px; font-family: 'Source Sans Pro';">4</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">30</label></td>
+	    <td width="121"><label style="font-size: 16px; font-family: 'Source Sans Pro';">120</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">120</label></td>
+	    <td width="83"><label style="font-size: 16px; font-family: 'Source Sans Pro';">180</label></td>
+	    <td width="246"><label style="font-size: 16px; font-family: 'Source Sans Pro';"></label></td>
+      </tr>
+    </table>
+	</div>
+<p> 
+	<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/chart.js') }}"></script>
+</p>
+<footer id="footer">Ing. Adriana Palacios Cruz &amp; Ing. José Jair Medina García<br />
+  Maestría en Ingeniería Electrónica, opción Instrumentación Electrónica<br />
+  Inteligencia Artificial<br />
+  Dr. Salvador Eugenio Ayala Raggi </footer>
+</body>
+</html>
