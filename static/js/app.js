@@ -685,17 +685,31 @@ comH.value = "#A025F6";
       x = 0;
       y = 0;
       s = 0;
-
-      var init = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      url = "/simular";
-      let response = await fetch(url, init);
-      data1 = await response.json();
-
+		
+		var datos1 = {
+      cn: cn,
+      pasto:pasto,
+      lb:lb,
+      cm:cm,
+     	jb:jb,
+      sr:sr,
+      zr:zr,
+      bh:bh,
+      hl:hl,
+	ticks:ticks,
+			NTS:NTS,		
+    };
+		var init = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(datos1),
+    };
+    url = "/simular";
+    let response = await fetch(url, init);
+    data1 = await response.json();
+		
       cn = data1.cn;
       pasto = data1.pasto;
       lb = data1.lb;
@@ -705,7 +719,8 @@ comH.value = "#A025F6";
       zr = data1.zr;
       bh = data1.bh;
       hl = data1.hl;
-		console.log(pasto);
+		ticks=data1.ticks;
+		NTS=data1.NTS;
 
       clc = Object.keys(cn);
       clp = Object.keys(pasto);
@@ -716,7 +731,6 @@ comH.value = "#A025F6";
       clz = Object.keys(zr);
       clb = Object.keys(bh);
       clh = Object.keys(hl);
-		console.log(clc);
 
       vac = Object.values(cn);
       vap = Object.values(pasto);
@@ -727,7 +741,6 @@ comH.value = "#A025F6";
       vaz = Object.values(zr);
       vab = Object.values(bh);
       vah = Object.values(hl);
-		console.log(vac);
 
       vc = clc.length;
       vp = clp.length
@@ -738,7 +751,6 @@ comH.value = "#A025F6";
       vz = clz.length;
       vb = clb.length;
       vh = clh.length;
-		console.log(vc);
 
 
       nm9.value = parseInt(vc, 10);
@@ -862,44 +874,6 @@ comH.value = "#A025F6";
       addval(vc, vl, vh, vs, vj, vb, vz, vcm, ticks, 0);
       await delay(tim);
       ticks++;
-		delete cn;
-		delete pasto;
-		delete lb;
-		delete cm;
-		delete jb;
-		delete sr;
-		delete zr;
-		delete bh;
-		delete hl;
-		clc.splice(0,clc.length);
-		clp.splice(0,clp.length);
-		cll.splice(0,cll.length);
-		clcm.splice(0,clcm.length);
-		clj.splice(0,clj.length);
-		cls.splice(0,cls.length);
-		clz.splice(0,clz.length);
-		clb.splice(0,clb.length);
-		clh.splice(0,clh.length);
-		
-		vac.splice(0,vac.length);
-		vap.splice(0,vap.length);
-		val.splice(0,val.length);
-		vacm.splice(0,vacm.length);
-		vaj.splice(0,vaj.length);
-		vas.splice(0,vas.length);
-		vaz.splice(0,vaz.length);
-		vab.splice(0,vab.length);
-		vah.splice(0,vah.length);
-		
-		delete vc;
-		delete vp;
-		delete vl;
-		delete vcm;
-		delete vj;
-		delete vs;
-		delete vz;
-		delete vb;
-		delete vh;
 		tic.value = ticks;
 		
     }

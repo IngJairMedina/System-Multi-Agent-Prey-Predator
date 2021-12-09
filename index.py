@@ -59,8 +59,20 @@ def cargar():
 @app.route('/simular', methods=['POST','GET'])
 def movi():
     if request.method=='POST':
-        cn,pasto,lb,cm,jb,sr,zr,bh,hl=pr.evaluar_agente()
-    return jsonify({"cn":cn,"pasto":pasto,"lb":lb,"cm":cm,"jb":jb,"sr":sr,"zr":zr,"bh":bh,"hl":hl})
+        request_data = request.get_json()
+        LC=request_data.get('cn')
+        LP=request_data.get('pasto')
+        LL=request_data.get('lb')
+        LCm=request_data.get('cm')
+        LJ=request_data.get('jb')
+        LS=request_data.get('sr')
+        LZ=request_data.get('zr')
+        LB=request_data.get('bh')
+        LH=request_data.get('hl')
+        ticks=request_data.get('ticks')
+        NTS=request_data.get('NTS')
+        cn,pasto,lb,cm,jb,sr,zr,bh,hl=pr.evaluar_agente(LC,LP,LL,LCm,LJ,LS,LZ,LB,LH)
+    return jsonify({"cn":cn,"pasto":pasto,"lb":lb,"cm":cm,"jb":jb,"sr":sr,"zr":zr,"bh":bh,"hl":hl,"ticks":ticks,"NTS":NTS})
 
 if __name__ == "__main__":
     app.run(debug=True)

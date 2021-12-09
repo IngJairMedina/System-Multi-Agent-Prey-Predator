@@ -87,7 +87,16 @@ class prin:
         hlc.AHa=Agente_hal
         return cnj.ACn,pst.APt,lb.ALb,cmd.ACm,ja.AJb,srp.ASr,zr.AZo,bh.ABu,hlc.AHa
         
-    def evaluar_agente(self):
+    def evaluar_agente(self,LC,LP,LL,LCm,LJ,LS,LZ,LB,LH):
+        cnj.ACn=LC
+        pst.APt=LP
+        lb.ALb=LL
+        cmd.ACm=LCm
+        ja.AJb=LJ
+        srp.ASr=LS
+        zr.AZo=LZ
+        bh.ABu=LB
+        hlc.AHa=LH
         Agente_pas=eap.eliminar(pst.APt, pst.nombre)
         pst.APt=Agente_pas
         Agente_con=eam.eliminar(cnj.ACn, cnj.nombre,cnj.tick_s_comer_max)
