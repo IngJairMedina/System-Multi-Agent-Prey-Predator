@@ -59,7 +59,7 @@ To start the simulation, click on the "EXECUTE" button, this will start the move
 
 ## Prey-Predator Scheme
 
-<img src="https://github.com/IngJairMedina/System-Multi-Agent-Prey-Predator/blob/main/static/cadena_alimenticia.png" width="400" >
+<img src="https://github.com/IngJairMedina/System-Multi-Agent-Prey-Predator/blob/main/Multi-Agent_Prey-Predator/src/static/cadena_alimenticia.png" width="400" >
 
 ## Results
 
