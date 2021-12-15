@@ -32,7 +32,7 @@ class conej:
         self.nmaxnac=12
         self.tiempoNuevaGesta=90
         self.tiempoGesta=30
-        self.energiaXtick=1
+        self.energiaXtick=10
         self.RA=10
         self.tick_s_comer_max=6
         

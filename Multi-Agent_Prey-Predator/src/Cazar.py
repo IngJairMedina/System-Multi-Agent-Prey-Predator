@@ -47,7 +47,7 @@ class cazar:
                     ya1=self.Agentej[nombrep][1]
                     evp=self.Agentej[nombrep][2]
                     cercania=np.sqrt((xa1-cxc)**2+(ya1-cyc)**2)
-                    if cercania<=RadAcc:
+                    if cercania<=RadAcc+80:
                         ec=ec+5
                         evp=False
                         v1[0]=xa1

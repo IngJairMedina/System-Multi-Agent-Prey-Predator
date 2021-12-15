@@ -58,7 +58,7 @@ class nacer:
                         v[4]=0
                         v[5]=0
                         v[6]=rng.integers(Vmin, Vmax).item()
-                        v[7]=30
+                        v[7]=ec
                         v[8]=False
                         v[9]=True
                         v[10]=0

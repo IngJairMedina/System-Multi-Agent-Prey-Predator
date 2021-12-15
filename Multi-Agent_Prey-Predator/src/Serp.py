@@ -35,7 +35,7 @@ class serp:
         self.nmaxnac=25
         self.tiempoNuevaGesta=360
         self.tiempoGesta=90
-        self.energiaXtick=1
+        self.energiaXtick=5
         self.RA=20
         self.tick_s_comer_max=12
         

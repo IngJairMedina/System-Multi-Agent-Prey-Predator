@@ -59,7 +59,7 @@ class aparear:
                     tngc1=tngc1-Dtick
                     if tngc1<0:
                         tngc1=0
-                    if eac1==False and tngc1==0 and VMiRep<vc1<VMaRep and cercania<=(RadAcc-5) and sc!=sc1 and rng.random()<ProbApar and rng.random()<probGest:#cercania en x
+                    if eac1==False and tngc1==0 and VMiRep<vc1<VMaRep and cercania<=(RadAcc+40) and sc!=sc1 and rng.random()<ProbApar and rng.random()<probGest:#cercania en x
                             if sc=='H':
                                 gc=TGesta
                                 tngc=TnuGest

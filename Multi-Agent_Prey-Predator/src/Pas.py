@@ -13,9 +13,8 @@ class pas:
     def __init__(self):
         self.APt={}
         self.nombre='Pasto'
-        self.propmax=100
-        self.propmin=50
-    
+        self.propmax=1
+        self.propmin=0    
     def limpiar(self):
         self.APt.clear()
         

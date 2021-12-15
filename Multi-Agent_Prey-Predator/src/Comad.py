@@ -33,7 +33,7 @@ class comad:
         self.nmaxnac=8
         self.tiempoNuevaGesta=120
         self.tiempoGesta=30
-        self.energiaXtick=1
+        self.energiaXtick=8
         self.RA=10
         self.tick_s_comer_max=4
         
